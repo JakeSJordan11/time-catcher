@@ -5,25 +5,27 @@ const isDev = require("electron-is-dev");
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    // frame: false,
-    alwaysOnTop: true,
     width: 400,
-    height: 300,
-    webPreferences: {
-      nodeIntegration: true
-    }
+    height: 400,
+    alwaysOnTop: true,
+    frame: false
+    // transparent: true
+    // webPreferences: {
+    //   nodeIntegration: true
+    // }
   });
 
-  // and load the index.html of the app.
-  //win.loadFile("index.html");
+  //load a local HTML file
   win.loadURL(
     isDev
       ? "http://localhost:3000"
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
 
+  win.setIgnoreMouseEvents(true);
+
   // Open the DevTools.
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished
