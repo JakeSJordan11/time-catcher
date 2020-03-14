@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GlobalStyles from "./styled-components/GlobalStyles";
+import StyledWindow from "./styled-components/StyledWindow";
 
 const App = () => {
   const Time = new Date().toLocaleTimeString();
@@ -8,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setTime(time => time + 1);
+      setTime(passingTime => passingTime + 1);
     }, 1000);
     return () => {
       window.clearInterval(timer);
@@ -18,19 +19,7 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <div
-        style={{
-          height: "100vh",
-          display: "grid",
-          justifyContent: "center",
-          alignContent: "center",
-          fontSize: "200px",
-          textShadow: "0px 10px #A83294",
-          color: "#20C9C9"
-        }}
-      >
-        {Time}
-      </div>
+      <StyledWindow>{Time}</StyledWindow>
     </>
   );
 };
