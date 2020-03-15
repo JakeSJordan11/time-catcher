@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { HashRouter as Router, Route } from "react-router-dom";
+// import { HashRouter as Router, Route } from "react-router-dom";
 import App from "./App";
-import Settings from "./components/Settings";
+// import Settings from "./components/Settings";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <Router>
-    <Route path="/" exact component={App} />
-    <Route path="/settings" component={Settings} />
-  </Router>,
+  // <Router>
+  //   <Route path="/" exact component={App} />
+  //   <Route path="/settings" component={Settings} />
+  // </Router>
+  <App />,
   document.getElementById("root")
 );
 

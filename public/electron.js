@@ -1,4 +1,4 @@
-const { app, BrowserWindow, nativeImage, Tray } = require("electron");
+const { app, BrowserWindow, Menu, Tray } = require("electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
 
@@ -8,7 +8,8 @@ function createWindow() {
     fullscreen: true,
     alwaysOnTop: true,
     frame: false,
-    transparent: true
+    transparent: true,
+    icon: "../build/logo192.png"
     // webPreferences: {
     //   nodeIntegration: true
     // }
@@ -52,19 +53,25 @@ app.on("activate", () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-// const iconPath = path.join(__dirname, "build/logo192.png");
+const iconPath = path.join(__dirname, "../build/logo192.png");
 
-// mainWindow.tray = new Tray(nativeImage.createFromPath(iconPath));
-
-// let tray = null;
-// app.on("ready", () => {
-//   tray = new Tray(iconPath);
-//   const contextMenu = Menu.buildFromTemplate([
-//     { label: "Item1", type: "radio" },
-//     { label: "Item2", type: "radio" },
-//     { label: "Item3", type: "radio", checked: true },
-//     { label: "Item4", type: "radio" }
-//   ]);
-//   tray.setToolTip("This is my application.");
-//   tray.setContextMenu(contextMenu);
-// });
+let tray = null;
+app.on("ready", () => {
+  tray = new Tray(iconPath);
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: "Hide",
+      click: function() {
+        app.hide;
+      }
+    },
+    {
+      label: "Quit",
+      click: function() {
+        app.quit();
+      }
+    }
+  ]);
+  tray.setToolTip("This is my application.");
+  tray.setContextMenu(contextMenu);
+});
