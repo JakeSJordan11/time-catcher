@@ -19,7 +19,9 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <StyledWindow>{Time}</StyledWindow>
+      <StyledWindow>
+        <div style={{ border: "solid", padding: "2rem" }}>{Time}</div>
+      </StyledWindow>
     </>
   );
 };
